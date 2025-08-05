@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="icon" href="images/favicon.png" type="image/png"  />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--  CSS  style.css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Preload Google Material Icons -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></noscript>
+
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png" alt="YouTube Logo">
+        </div>
+        <div class="welcome-text">Welcome to YouTube</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-0">
+            <!-- Left Section -->
+            <div class="d-flex align-items-center">
+                <button class="btn me-2 d-lg-none" id="mobile-menu-toggle">
+                    <i class="material-icons">menu</i>
+                </button>
+                <a class="navbar-brand me-3" href="#" onclick="showContent('home-content')">
+                    <img src="images/youtube-logo.png" alt="YouTube Logo" height="35px" width="150px">
+                </a>
+            </div>
+
+            <!-- Mid Section - Search Form -->
+            <div class="search-form me-3">
+                <input type="text" class="form-control" placeholder="Search">
+                <button class="btn" type="submit">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+
+            <!-- Right Section - Icons -->
+            <div class="nav-icons d-flex align-items-center">
+                <button class="btn d-none d-md-block" onclick="showContent('create-content')">
+                    <i class="material-icons">videocam</i>
+                </button>
+                <button class="btn d-none d-md-block" onclick="showContent('apps-content')">
+                    <i class="material-icons">apps</i>
+                </button>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons">notifications</i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="material-icons">favorite</i>
+                            </div>
+                            <div>
+                                <p class="mb-1"><strong>John Doe</strong> liked your comment</p>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="material-icons">subscriptions</i>
+                            </div>
+                            <div>
+                                <p class="mb-1"><strong>Tech Channel</strong> uploaded a new video</p>
+                                <small class="text-muted">5 hours ago</small>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="material-icons">thumb_up</i>
+                            </div>
+                            <div>
+                                <p class="mb-1"><strong>Sarah Johnson</strong> liked your video</p>
+                                <small class="text-muted">1 day ago</small>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <a href="#" class="text-decoration-none">View all notifications</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons">account_circle</i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <div class="profile-dropdown w-100">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Profile" class="profile-avatar">
+                            <h5>Ahmed Mohamed</h5>
+                            <p class="text-muted">@ahmed_mohamed</p>
+                            <a class="dropdown-item d-flex justify-content-center" href="#" onclick="showContent('profile-content')"><i class="material-icons me-2">account_circle</i>  View Profile</a>
+
+                        </div>
+                        <hr>
+                        <a class="dropdown-item d-flex" href="#" onclick="showContent('your-channel-content')"><i class="material-icons me-2">account_circle</i> Your Channel</a>
+
+                        <a class="dropdown-item d-flex" href="#" onclick="showContent('purchases-content')"><i class="material-icons me-2">monetization_on</i> Purchases</a>
+                        <a class="dropdown-item d-flex" href="#" onclick="showContent('settings-content')"><i class="material-icons me-2">settings</i> Settings</a>
+                        <hr>
+                        <a class="dropdown-item d-flex" href="#"><i class="material-icons me-2">logout</i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <nav class="pt-2">
+            <a href="#" class="nav-link active" onclick="showContent('home-content')">
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('explore-content')">
+                <i class="material-icons">explore</i>
+                <span>Explore</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('subscriptions-content')">
+                <i class="material-icons">subscriptions</i>
+                <span>Subscriptions</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('originals-content')">
+                <i class="material-icons">ondemand_video</i>
+                <span>Originals</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('music-content')">
+                <i class="material-icons">play_circle</i>
+                <span>YouTube Music</span>
+            </a>
+
+            <hr class="my-2 d-flex">
+
+            <a href="#" class="nav-link" onclick="showContent('library-content')">
+                <i class="material-icons">video_library</i>
+                <span>Library</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('history-content')">
+                <i class="material-icons">history</i>
+                <span>History</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('your-videos-content')">
+                <i class="material-icons">smart_display</i>
+                <span>Your videos</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('watch-later-content')">
+                <i class="material-icons">watch_later</i>
+                <span>Watch later</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('downloads-content')">
+                <i class="material-icons">download</i>
+                <span>Downloads</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('liked-content')">
+                <i class="material-icons">thumb_up</i>
+                <span>Liked videos</span>
+            </a>
+
+            <hr class="my-2  d-flex">
+            <div class="nav-section-title">SUBSCRIPTIONS</div>
+
+            <a href="#" class="nav-link" onclick="showContent('tech-channel')">
+                <img class="channel-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel">
+                <span>Tech Channel</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('gaming-channel')">
+                <img class="channel-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Channel">
+                <span>Gaming Channel</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('cooking-channel')">
+                <img class="channel-img" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Channel">
+                <span>Cooking Channel</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('travel-channel')">
+                <img class="channel-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Channel">
+                <span>Travel Channel</span>
+            </a>
+            <a href="#" class="nav-link" onclick="showContent('music-channel')">
+                <img class="channel-img" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Channel">
+                <span>Music Channel</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Content -->
+        <div id="home-content" class="content-section active">
+            <div class="container-fluid">
+                <!-- Category Filters -->
+                <div class="d-flex flex-wrap mb-3">
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">All</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Gaming</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Music</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Live</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Programming</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Cooking</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">News</button>
+                    <button class="btn btn-sm btn-light me-2 mb-2 rounded-pill">Sports</button>
+                </div>
+
+                <!-- Video Grid -->
+                <div class="row g-4">
+                    <!-- Video Cards -->
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (3).png" alt="Video Thumbnail">
+                                <div class="video-duration">15:42</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download (2).png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">باب الحارة خناقة العكيد ابو شهاب مع ابو النار </h6>
+                                    <p class="channel-name mb-0">باب الحارة </p>
+                                    <p class="video-meta mb-0">1.2M views • 3 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (8).png" alt="Video Thumbnail">
+                                <div class="video-duration">22:18</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download (8).png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">كيك على طريقة الشيف ميس</h6>
+                                    <p class="channel-name mb-0">Cooking Channel</p>
+                                    <p class="video-meta mb-0">850K views • 1 month ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">18:47</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Maldives Tour - Top 10 Places to Visit</h6>
+                                    <p class="channel-name mb-0">Travel Channel</p>
+                                    <p class="video-meta mb-0">3.1M views • 8 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (13).png" alt="Video Thumbnail">
+                                <div class="video-duration">28:05</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download (12).png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Watch the last episode of The Pit series</h6>
+                                    <p class="channel-name mb-0">’mood</p>
+                                    <p class="video-meta mb-0">2.4M views • 5 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (10).png" alt="Video Thumbnail">
+                                <div class="video-duration">58:33</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download (9).png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">تلاوة القران الكريم بصوت الشيخ مشاري العفاسي</h6>
+                                    <p class="channel-name mb-0">القران الكريم</p>
+                                    <p class="video-meta mb-0">950K views • 2 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (7).png" alt="Video Thumbnail">
+                                <div class="video-duration">18:47</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download.png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">The funniest clips from Tom and Jerry</h6>
+                                    <p class="channel-name mb-0">Pizza City</p>
+                                    <p class="video-meta mb-0">3.1M views • 8 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://i.ytimg.com/vi/1gDhl4leEzA/maxresdefault.jpg" alt="Video Thumbnail">
+                                <div class="video-duration">35:12</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Building a Mobile App with Flutter</h6>
+                                    <p class="channel-name mb-0">Tech Channel</p>
+                                    <p class="video-meta mb-0">420K views • 1 month ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (6).png" alt="Video Thumbnail">
+                                <div class="video-duration">16:29</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="images/download (11).png" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Funny clips</h6>
+                                    <p class="channel-name mb-0">Funny</p>
+                                    <p class="video-meta mb-0">1.7M views • 4 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Explore Content -->
+        <div id="explore-content" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Explore</h2>
+                <p>Discover new content and trending videos from across YouTube.</p>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="material-icons me-2">trending_up</i> Trending Videos</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <span class="badge bg-danger me-3">1</span>
+                                        <div>
+                                            <div>AI Revolution: What's Next in 2025</div>
+                                            <small class="text-muted">Tech Channel • 1.5M views</small>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <span class="badge bg-secondary me-3">2</span>
+                                        <div>
+                                            <div>Top 10 Summer Destinations 2025</div>
+                                            <small class="text-muted">Travel Channel • 890K views</small>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <span class="badge bg-warning me-3">3</span>
+                                        <div>
+                                            <div>New Marvel Movie Trailer Breakdown</div>
+                                            <small class="text-muted">Movie Central • 3.2M views</small>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="material-icons me-2">category</i> Browse Categories</h5>
+                                <div class="d-flex flex-wrap">
+                                    <button class="btn btn-outline-secondary m-2">Gaming</button>
+                                    <button class="btn btn-outline-secondary m-2">Music</button>
+                                    <button class="btn btn-outline-secondary m-2">Sports</button>
+                                    <button class="btn btn-outline-secondary m-2">News</button>
+                                    <button class="btn btn-outline-secondary m-2">Learning</button>
+                                    <button class="btn btn-outline-secondary m-2">Fashion</button>
+                                    <button class="btn btn-outline-secondary m-2">Beauty</button>
+                                    <button class="btn btn-outline-secondary m-2">Comedy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscriptions Content -->
+        <div id="subscriptions-content" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Subscriptions</h2>
+                <p>Latest videos from your subscribed channels.</p>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4 h-100">
+                                    <img src="images/download m.png" class="img-fluid rounded-start" alt="..." height="100%">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">New MacBook Pro 2025 Review</h5>
+                                        <p class="card-text">Tech Channel</p>
+                                        <p class="card-text"><small class="text-muted">1.1M views • 1 day ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/download m.png" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">GTA 7: First Look at New Features</h5>
+                                        <p class="card-text">Gaming Channel</p>
+                                        <p class="card-text"><small class="text-muted">2.3M views • 3 days ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Library Content -->
+        <div id="library-content" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Library</h2>
+                <p>Your saved playlists and collections.</p>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light p-3 rounded me-3">
+                                        <i class="material-icons">playlist_play</i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Watch Later</h5>
+                                        <p class="text-muted mb-0">24 videos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light p-3 rounded me-3">
+                                        <i class="material-icons">thumb_up</i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">Liked Videos</h5>
+                                        <p class="text-muted mb-0">87 videos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light p-3 rounded me-3">
+                                        <i class="material-icons">history</i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">History</h5>
+                                        <p class="text-muted mb-0">1,234 videos</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div id="profile-content" class="content-section">
+            <div class="container-fluid">
+                <div class="profile-content">
+                    <div class="profile-banner"></div>
+                    <div class="profile-header">
+                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Profile" class="profile-avatar">
+                        <div class="ms-4">
+                            <h2>Ahmed Mohamed</h2>
+                            <p>@ahmed_mohamed</p>
+                            <span class="channel-badge">Verified Creator</span>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-value">1.2M</div>
+                            <div class="stat-label">Subscribers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">245</div>
+                            <div class="stat-label">Videos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">58M</div>
+                            <div class="stat-label">Views</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2018</div>
+                            <div class="stat-label">Joined</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <h4 class="mb-4">Latest Videos</h4>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="video-card">
+                                    <div class="video-thumbnail">
+                                        <img src="images/download m.png" alt="Video Thumbnail">
+                                        <div class="video-duration">24:18</div>
+                                    </div>
+                                    <div class="video-details d-flex pt-2">
+                                        <div>
+                                            <h6 class="video-title">How to Start a Business with $100 in 2025</h6>
+                                            <p class="video-meta mb-0">2.8M views • 1 week ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="video-card">
+                                    <div class="video-thumbnail">
+                                        <img src="images/download m.png" alt="Video Thumbnail">
+                                        <div class="video-duration">18:42</div>
+                                    </div>
+                                    <div class="video-details d-flex pt-2">
+                                        <div>
+                                            <h6 class="video-title">10 Easy Science Experiments You Can Do at Home</h6>
+                                            <p class="video-meta mb-0">1.9M views • 2 weeks ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="video-card">
+                                    <div class="video-thumbnail">
+                                        <img src="images/download m.png" alt="Video Thumbnail">
+                                        <div class="video-duration">32:11</div>
+                                    </div>
+                                    <div class="video-details d-flex pt-2">
+                                        <div>
+                                            <h6 class="video-title">The Future of Electric Cars: What to Expect</h6>
+                                            <p class="video-meta mb-0">1.4M views • 5 days ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- originals-content -->
+        <div id="originals-content" class="content-section">
+            <div class="container-fluid text-center py-5">
+                <h2 class="section-title">YouTube Originals</h2>
+                <p class="lead">Exclusive content only on YouTube</p>
+                <button class="btn btn-danger mt-3">Browse Originals</button>
+            </div>
+        </div>
+        <!-- music-content -->
+        <div id="music-content" class="content-section">
+            <div class="container-fluid text-center py-5">
+                <h2 class="section-title">YouTube Music</h2>
+                <p class="lead">Enjoy millions of songs and videos</p>
+                <button class="btn btn-danger mt-3">Open YouTube Music</button>
+            </div>
+        </div>
+        <!-- history-content -->
+        <div id="history-content" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">History</h2>
+                <p>Videos you've watched recently.</p>
+            </div>
+        </div>
+        <!-- your-videos-content -->
+        <div id="your-videos-content" class="content-section">
+            <div class="container-fluid">
+                <h2 class="section-title">Your Videos</h2>
+                <p>Manage your uploaded content.</p>
+            </div>
+        </div>
+
+        <!-- Create Content -->
+        <div id="create-content" class="content-section">
+            <div class="container-fluid">
+                <div class="icon-content-section">
+                    <div class="icon-content-header">
+                        <i class="material-icons">videocam</i>
+                        <div>
+                            <h2 class="section-title">Create Content</h2>
+                            <p class="text-muted">Upload videos, go live, or create Shorts</p>
+                        </div>
+                    </div>
+
+                    <div class="icon-content-grid">
+                        <div class="icon-content-item">
+                            <i class="material-icons">upload</i>
+                            <h4>Upload Video</h4>
+                            <p class="text-muted">Share your videos with the world</p>
+                            <button class="btn btn-outline-danger mt-2">Upload</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">live_tv</i>
+                            <h4>Go Live</h4>
+                            <p class="text-muted">Stream live to your audience</p>
+                            <button class="btn btn-outline-danger mt-2">Start Stream</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">music_video</i>
+                            <h4>Create Short</h4>
+                            <p class="text-muted">Make short, engaging videos</p>
+                            <button class="btn btn-outline-danger mt-2">Create</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">post_add</i>
+                            <h4>Create Post</h4>
+                            <p class="text-muted">Share updates with your community</p>
+                            <button class="btn btn-outline-danger mt-2">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apps Content -->
+        <div id="apps-content" class="content-section">
+            <div class="container-fluid">
+                <div class="icon-content-section">
+                    <div class="icon-content-header">
+                        <i class="material-icons">apps</i>
+                        <div>
+                            <h2 class="section-title">YouTube Apps</h2>
+                            <p class="text-muted">Access YouTube from all your devices</p>
+                        </div>
+                    </div>
+
+                    <div class="icon-content-grid">
+                        <div class="icon-content-item">
+                            <i class="material-icons">phone_iphone</i>
+                            <h4>Mobile App</h4>
+                            <p class="text-muted">YouTube for iOS and Android</p>
+                            <button class="btn btn-outline-danger mt-2">Download</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">tv</i>
+                            <h4>Smart TVs</h4>
+                            <p class="text-muted">Watch on your television</p>
+                            <button class="btn btn-outline-danger mt-2">Get App</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">gamepad</i>
+                            <h4>Gaming</h4>
+                            <p class="text-muted">YouTube Gaming experience</p>
+                            <button class="btn btn-outline-danger mt-2">Explore</button>
+                        </div>
+
+                        <div class="icon-content-item">
+                            <i class="material-icons">music_note</i>
+                            <h4>YouTube Music</h4>
+                            <p class="text-muted">Official music streaming app</p>
+                            <button class="btn btn-outline-danger mt-2">Try Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Channel Content -->
+        <div id="your-channel-content" class="content-section">
+            <div class="container-fluid">
+                <div class="icon-content-section">
+                    <div class="icon-content-header">
+                        <i class="material-icons">account_circle</i>
+                        <div>
+                            <h2 class="section-title">Your Channel</h2>
+                            <p class="text-muted">Manage your YouTube channel</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">analytics</i> Channel Analytics</h4>
+                                    <p class="text-muted">View your channel performance and audience insights</p>
+                                    <button class="btn btn-outline-danger">View Analytics</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">monetization_on</i> Monetization</h4>
+                                    <p class="text-muted">Manage your revenue sources and payments</p>
+                                    <button class="btn btn-outline-danger">Monetization Settings</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">edit</i> Customization</h4>
+                                    <p class="text-muted">Edit your channel layout and branding</p>
+                                    <button class="btn btn-outline-danger">Customize Channel</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">people</i> Audience</h4>
+                                    <p class="text-muted">See who's watching your videos</p>
+                                    <button class="btn btn-outline-danger">View Audience</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchases Content -->
+        <div id="purchases-content" class="content-section">
+            <div class="container-fluid">
+                <div class="icon-content-section">
+                    <div class="icon-content-header">
+                        <i class="material-icons">monetization_on</i>
+                        <div>
+                            <h2 class="section-title">Your Purchases</h2>
+                            <p class="text-muted">Movies, shows and memberships you've purchased</p>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">Movies & Shows</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://via.placeholder.com/120x70" class="rounded me-3" alt="Movie">
+                                <div>
+                                    <h5 class="mb-1">Avengers: Endgame</h5>
+                                    <p class="text-muted mb-1">Purchased on Jan 15, 2025</p>
+                                    <p class="mb-0">$14.99</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/120x70" class="rounded me-3" alt="Movie">
+                                <div>
+                                    <h5 class="mb-1">The Matrix Resurrections</h5>
+                                    <p class="text-muted mb-1">Purchased on Feb 2, 2025</p>
+                                    <p class="mb-0">$12.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">Channel Memberships</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" alt="Channel">
+                                    <div>
+                                        <h5 class="mb-0">Tech Channel</h5>
+                                        <p class="text-muted mb-0">Member since Dec 2024</p>
+                                    </div>
+                                </div>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" alt="Channel">
+                                    <div>
+                                        <h5 class="mb-0">Gaming Channel</h5>
+                                        <p class="text-muted mb-0">Member since Nov 2024</p>
+                                    </div>
+                                </div>
+                                <span class="badge bg-success">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div id="settings-content" class="content-section">
+            <div class="container-fluid">
+                <div class="icon-content-section">
+                    <div class="icon-content-header">
+                        <i class="material-icons">settings</i>
+                        <div>
+                            <h2 class="section-title">Account Settings</h2>
+                            <p class="text-muted">Manage your YouTube preferences and privacy</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">lock</i> Privacy</h4>
+                                    <p class="text-muted">Control what others see about your activity</p>
+                                    <button class="btn btn-outline-danger">Privacy Settings</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">notifications</i> Notifications</h4>
+                                    <p class="text-muted">Choose what notifications you receive</p>
+                                    <button class="btn btn-outline-danger">Notification Settings</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">play_circle</i> Playback</h4>
+                                    <p class="text-muted">Adjust video playback settings</p>
+                                    <button class="btn btn-outline-danger">Playback Settings</button>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4><i class="material-icons me-2">language</i> Language</h4>
+                                    <p class="text-muted">Set your preferred language</p>
+                                    <button class="btn btn-outline-danger">Language Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Watch Later Content -->
+        <div id="watch-later-content" class="content-section">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <i class="fas fa-clock"></i>
+                    <h2 class="section-title">Watch Later</h2>
+                </div>
+
+
+
+                <div class="row g-4">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://i.ytimg.com/vi/zABLecsR5UE/maxresdefault.jpg" alt="Video Thumbnail">
+                                <div class="video-duration">25:14</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Advanced CSS Techniques for Modern Web Design</h6>
+                                    <p class="channel-name mb-0">Tech Channel</p>
+                                    <p class="video-meta mb-0">Added 3 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download m.png" alt="Video Thumbnail">
+                                <div class="video-duration">18:33</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Creating Beautiful UI Animations in JavaScript</h6>
+                                    <p class="channel-name mb-0">Design Channel</p>
+                                    <p class="video-meta mb-0">Added 1 week ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download m.png" alt="Video Thumbnail">
+                                <div class="video-duration">32:05</div>
+                                <div class="progress" style="position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.3);">
+                                    <div class="progress-bar bg-danger" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Mastering Python Data Structures</h6>
+                                    <p class="channel-name mb-0">Programming Channel</p>
+                                    <p class="video-meta mb-0">Partially watched • Added 2 weeks ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download m.png" alt="Video Thumbnail">
+                                <div class="video-duration">42:18</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">The Science of Perfect Sourdough Bread</h6>
+                                    <p class="channel-name mb-0">Baking Channel</p>
+                                    <p class="video-meta mb-0">Added 5 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads Content -->
+        <div id="downloads-content" class="content-section">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <i class="fas fa-download"></i>
+                    <h2 class="section-title">Downloads</h2>
+                </div>
+
+                <div class="section-actions">
+                    <div class="section-filter my-2">
+                        <button class="btn btn-sm btn-outline-secondary">All</button>
+                        <button class="btn btn-sm btn-outline-secondary">Completed</button>
+                        <button class="btn btn-sm btn-outline-secondary">In Progress</button>
+                    </div>
+                    <button class="btn btn-sm btn-danger my-2"><i class="fas fa-cog me-1"></i> Download Settings</button>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download m.png" alt="Video Thumbnail">
+                                <div class="video-duration">19:22</div>
+                                <span class="badge bg-success" style="position: absolute; top: 10px; left: 10px;">Downloaded</span>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Travel Photography Masterclass</h6>
+                                    <p class="channel-name mb-0">Photography Channel</p>
+                                    <p class="video-meta mb-0">720p • 128MB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">35:45</div>
+                                <div class="progress" style="position: absolute; top: 10px; left: 10px; right: 10px; height: 4px; background: rgba(255,255,255,0.3);">
+                                    <div class="progress-bar bg-danger" style="width: 65%"></div>
+                                </div>
+                                <span class="badge bg-warning" style="position: absolute; top: 20px; left: 10px;">Downloading...</span>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">JavaScript Algorithms Crash Course</h6>
+                                    <p class="channel-name mb-0">Tech Channel</p>
+                                    <p class="video-meta mb-0">720p • 256MB (65%)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">28:51</div>
+                                <span class="badge bg-success" style="position: absolute; top: 10px; left: 10px;">Downloaded</span>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Building a Game with Unity</h6>
+                                    <p class="channel-name mb-0">Game Dev Channel</p>
+                                    <p class="video-meta mb-0">720p • 198MB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">22:37</div>
+                                <span class="badge bg-success" style="position: absolute; top: 10px; left: 10px;">Downloaded</span>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Mediterranean Diet Recipes</h6>
+                                    <p class="channel-name mb-0">Health Channel</p>
+                                    <p class="video-meta mb-0">720p • 145MB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h4>Download Settings</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="autoDownload" checked>
+                                <label class="form-check-label" for="autoDownload">Auto-download recommended videos</label>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Download Quality</label>
+                                <select class="form-select">
+                                    <option>Standard quality (480p)</option>
+                                    <option selected>Higher quality (720p)</option>
+                                    <option>Best quality (1080p)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Download Over</label>
+                                <select class="form-select">
+                                    <option>Wi-Fi only</option>
+                                    <option selected>Wi-Fi and mobile data</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-danger">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liked Videos Content -->
+        <div id="liked-content" class="content-section">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <i class="fas fa-thumbs-up"></i>
+                    <h2 class="section-title">Liked Videos</h2>
+                </div>
+
+                <div class="section-actions">
+                    <div class="section-filter my-2">
+                        <button class="btn btn-sm btn-outline-secondary">All</button>
+                        <button class="btn btn-sm btn-outline-secondary">This Year</button>
+                        <button class="btn btn-sm btn-outline-secondary">This Month</button>
+                    </div>
+                    <div class="d-flex align-items-center my-2">
+                        <span class="me-2">Sort by:</span>
+                        <select class="form-select form-select-sm w-auto">
+                            <option>Recently added</option>
+                            <option>Most viewed</option>
+                            <option>Alphabetical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">15:42</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Web Development Fundamentals - Learn HTML & CSS</h6>
+                                    <p class="channel-name mb-0">Tech Channel</p>
+                                    <p class="video-meta mb-0">Liked 2 weeks ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">28:05</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Top 10 Games of 2023 - Complete Review</h6>
+                                    <p class="channel-name mb-0">Gaming Channel</p>
+                                    <p class="video-meta mb-0">Liked 1 month ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (12).png" alt="Video Thumbnail">
+                                <div class="video-duration">18:47</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Maldives Tour - Top 10 Places to Visit</h6>
+                                    <p class="channel-name mb-0">Travel Channel</p>
+                                    <p class="video-meta mb-0">Liked 3 months ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="images/download (5).png" alt="Video Thumbnail">
+                                <div class="video-duration">35:12</div>
+                            </div>
+                            <div class="video-details d-flex pt-2">
+                                <img class="channel-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Channel Avatar">
+                                <div>
+                                    <h6 class="video-title">Building a Mobile App with Flutter</h6>
+                                    <p class="channel-name mb-0">Tech Channel</p>
+                                    <p class="video-meta mb-0">Liked 5 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h4>Your Liked Videos Stats</h4>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h2 class="text-danger">87</h2>
+                                    <p>Total Liked Videos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h2 class="text-danger">32</h2>
+                                    <p>Tech Videos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h2 class="text-danger">18</h2>
+                                    <p>Gaming Videos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h2 class="text-danger">15</h2>
+                                    <p>Travel Videos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
