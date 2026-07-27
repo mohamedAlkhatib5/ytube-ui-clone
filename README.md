@@ -1,3 +1,4 @@
+
 early Realistic YouTube UI Clone
 
 
@@ -5,7 +6,7 @@ early Realistic YouTube UI Clone
 
 
 image
-![Uploading youtube.png…]()
+<img width="1920" height="1080" alt="youtube" src="https://github.com/user-attachments/assets/3cb2f9de-8786-4545-abf8-dca2af25c941" />
 
 This project is a simple and nearly realistic clone of the YouTube interface, built using HTML, CSS, Bootstrap, and JavaScript. The UI includes a comprehensive set of side menus such as:
 
